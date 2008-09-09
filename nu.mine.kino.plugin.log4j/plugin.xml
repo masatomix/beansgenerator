@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+   <extension
+         point="org.eclipse.ui.preferencePages">
+      <page
+            class="nu.mine.kino.plugin.log4j.ui.preferencepages.Log4jPreferencePage"
+            id="nu.mine.kino.plugin.log4j.ui.preferencepages.Log4jPreferencePage"
+            name="ログ設定"/>
+   </extension>
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer class="nu.mine.kino.plugin.log4j.ui.preferencepages.Log4jPreferenceInitializer"/>
+   </extension>
+
+</plugin>
