@@ -11,13 +11,19 @@
             id="beangenerator"
             label="JavaBeans生成"
             path="additions">
-      </menu>
+      </menu>                  <action
+               class="nu.mine.kino.plugin.beangenerator.actions.JavaBeansGeneratorAction"
+               id="nu.mine.kino.plugin.beangenerator.actions.JavaBeansReaderGeneratorAction"
+               label="JavaBeansリーダの生成"
+               menubarPath="beangenerator/additions">
+         </action>
          <action
                class="nu.mine.kino.plugin.beangenerator.actions.JavaBeansGeneratorAction"
                id="nu.mine.kino.plugin.beangenerator.actions.JavaBeansGeneratorAction"
-               label="JavaBeansを生成する"
+               label="JavaBeansの生成"
                menubarPath="beangenerator/additions">
          </action>
+
       </objectContribution>
       <objectContribution
             id="nu.mine.kino.plugin.beangenerator.objectContribution2"

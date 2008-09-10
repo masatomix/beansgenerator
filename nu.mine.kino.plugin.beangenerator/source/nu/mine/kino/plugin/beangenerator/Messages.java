@@ -26,9 +26,15 @@ public class Messages extends NLS {
 
     public static String JavaBeansCreatorWithProgress_MSG_EXECUTE;
 
-    public static String JavaBeansGeneratorAction_MSG_ALERT_DIALOG;
+    public static String JavaBeansGeneratorAction_MSG_DIALOG_DESC;
 
     public static String JavaBeansGeneratorAction_MSG_DIALOG_MESSAGE;
+
+    public static String TemplateCreateAction_MESSAGE_CONFIRM;
+
+    public static String TemplateCreateAction_MESSAGE_CONFIRM2;
+
+    public static String TemplateCreateAction_MESSAGE_DIALOG;
     static {
         // initialize resource bundle
         NLS.initializeMessages(BUNDLE_NAME, Messages.class);

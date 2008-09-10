@@ -40,8 +40,6 @@ public class JavaBeansGeneratorAction implements IObjectActionDelegate {
 
     private IWorkbenchSite site;
 
-    private static final String MESSAGE_CONFIRM = "JavaBeansの自動生成を実行します。よろしいですか？\r\nすでにファイルが存在する場合、上書きされます。";
-
     public void setActivePart(IAction action, IWorkbenchPart targetPart) {
         this.site = targetPart.getSite();
     }
@@ -51,8 +49,9 @@ public class JavaBeansGeneratorAction implements IObjectActionDelegate {
                 .getShell();
 
         if (!MessageDialog.openConfirm(shell,
-                Messages.JavaBeansGeneratorAction_MSG_DIALOG_MESSAGE,
-                MESSAGE_CONFIRM)) {
+                Messages.JavaBeansGeneratorAction_MSG_DIALOG_MESSAGE, action
+                        .getText()
+                        + Messages.JavaBeansGeneratorAction_MSG_DIALOG_DESC)) {
             return;
         }
 
@@ -63,7 +62,7 @@ public class JavaBeansGeneratorAction implements IObjectActionDelegate {
         try {
             logger.debug("execute"); //$NON-NLS-1$
             JavaBeansCreatorWithProgress progress = new JavaBeansCreatorWithProgress(
-                    ss, site);
+                    ss, site, action);
             dialog.run(true, true, progress);
         } catch (InvocationTargetException e) {
             Activator.logException(e);

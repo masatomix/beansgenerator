@@ -19,8 +19,8 @@ import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 
 import nu.mine.kino.plugin.beangenerator.Activator;
+import nu.mine.kino.plugin.beangenerator.Messages;
 
-import org.apache.log4j.Logger;
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
@@ -50,10 +50,8 @@ public class TemplateCreateAction implements IObjectActionDelegate {
 
     private static final String XLS2 = "JavaBeansSampleAnno.xls"; //$NON-NLS-1$
 
-    private static final Logger logger = Logger
-            .getLogger(TemplateCreateAction.class);
-
-    private static final String MESSAGE_CONFIRM = "JavaBeans用Excelを作成します。よろしいですか？\r\nすでにファイルが存在する場合、上書きされます。";
+    private static final String[] XLSs = { "JavaBeansSample.xls",
+            "JavaBeansSampleAnno.xls" };
 
     private IStructuredSelection ss;
 
@@ -67,8 +65,10 @@ public class TemplateCreateAction implements IObjectActionDelegate {
         Shell shell = PlatformUI.getWorkbench().getActiveWorkbenchWindow()
                 .getShell();
 
-        if (!MessageDialog.openConfirm(shell, "JavaBeans用Excelを作成",
-                MESSAGE_CONFIRM + "\r\nファイル名: " + XLS1 + ",  " + XLS2)) {
+        if (!MessageDialog.openConfirm(shell,
+                Messages.TemplateCreateAction_MESSAGE_DIALOG,
+                Messages.TemplateCreateAction_MESSAGE_CONFIRM + XLS1
+                        + ",  " + XLS2)) { //$NON-NLS-2$
             return;
         }
 
@@ -98,8 +98,9 @@ public class TemplateCreateAction implements IObjectActionDelegate {
                             throws InvocationTargetException,
                             InterruptedException {
                         IProject project = firstElement.getProject();
-                        createFile(project, XLS1, monitor);
-                        createFile(project, XLS2, monitor);
+                        // createFile(project, XLS1, monitor);
+                        // createFile(project, XLS2, monitor);
+                        createFiles(project, monitor, XLSs);
                     }
                 };
 
@@ -110,6 +111,13 @@ public class TemplateCreateAction implements IObjectActionDelegate {
             Activator.logException(e);
         } catch (InterruptedException e) {
             Activator.logException(e, false);
+        }
+    }
+
+    private void createFiles(IProject project, IProgressMonitor monitor,
+            String... fileNames) throws InvocationTargetException {
+        for (String filename : fileNames) {
+            createFile(project, filename, monitor);
         }
     }
 

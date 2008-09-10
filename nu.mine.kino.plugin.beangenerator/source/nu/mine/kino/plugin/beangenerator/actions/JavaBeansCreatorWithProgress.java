@@ -18,6 +18,7 @@ import java.util.List;
 
 import nu.mine.kino.plugin.beangenerator.Activator;
 import nu.mine.kino.plugin.beangenerator.JavaBeansCreator;
+import nu.mine.kino.plugin.beangenerator.JavaBeansReaderCreator;
 import nu.mine.kino.plugin.beangenerator.Messages;
 import nu.mine.kino.plugin.beangenerator.sheetdata.IClassInformation;
 
@@ -31,6 +32,7 @@ import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.JavaCore;
 import org.eclipse.jdt.ui.actions.FormatAllAction;
 import org.eclipse.jdt.ui.actions.OrganizeImportsAction;
+import org.eclipse.jface.action.IAction;
 import org.eclipse.jface.operation.IRunnableWithProgress;
 import org.eclipse.jface.viewers.IStructuredSelection;
 import org.eclipse.jface.viewers.StructuredSelection;
@@ -54,10 +56,13 @@ public class JavaBeansCreatorWithProgress implements IRunnableWithProgress {
 
     private IWorkbenchSite site;
 
+    private final IAction action;
+
     public JavaBeansCreatorWithProgress(IStructuredSelection ss,
-            IWorkbenchSite site) {
+            IWorkbenchSite site, IAction action) {
         this.ss = ss;
         this.site = site;
+        this.action = action;
     }
 
     public void run(IProgressMonitor monitor) throws InvocationTargetException,
@@ -89,10 +94,22 @@ public class JavaBeansCreatorWithProgress implements IRunnableWithProgress {
                     monitor
                             .subTask(Messages.JavaBeansCreatorWithProgress_MSG_EXECUTE
                                     + classInformation.getClassNameJ());
-                    ICompilationUnit cu = new JavaBeansCreator(javaProject)
-                            .create(classInformation);
+                    ICompilationUnit cu = null;
+                    // actionが、Reader生成とJavaBeans 生成でパタンわけ。
+                    if (action
+                            .getId()
+                            .equals(
+                                    "nu.mine.kino.plugin.beangenerator.actions.JavaBeansReaderGeneratorAction")) { //$NON-NLS-1$
+                        cu = new JavaBeansReaderCreator(javaProject)
+                                .create(classInformation);
+                    } else {
+                        cu = new JavaBeansCreator(javaProject)
+                                .create(classInformation);
+                    }
+                    if (cu != null) {
+                        list.add(cu);
+                    }
 
-                    list.add(cu);
                     if (monitor.isCanceled()) {
                         throw new InterruptedException(
                                 "Cancel has been requested."); //$NON-NLS-1$
