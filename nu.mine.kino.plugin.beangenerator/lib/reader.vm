@@ -17,14 +17,14 @@ package ${class.packageName};
  */
 @Sheet(name = "${class.className}")//$NON-NLS-1$
 public class ${class.className}Sheet {
-    private List<${class.className}> instanceList; // ホントは、インタフェースがいいな
+    private List<${class.className}> instanceList; 
     
 	@HorizontalRecords(tableLabel = "${class.className}", recordClass = ${class.className}.class)//$NON-NLS-1$
-    public void set${class.className}(List<${class.className}> instanceList) {//<>はホントはインタフェースがいいな
+    public void set${class.className}(List<${class.className}> instanceList) {
         this.instanceList = instanceList;
     }
 
-    public List<${class.className}> get${class.className}() {//<>はホントはインタフェースがいいな
+    public List<${class.className}> get${class.className}() {
         return instanceList;
     }
 	
