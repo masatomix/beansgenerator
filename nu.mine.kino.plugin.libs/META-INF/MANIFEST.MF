@@ -1,17 +1,19 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Library Plug-in
+Bundle-Name: %pluginName
 Bundle-SymbolicName: nu.mine.kino.plugin.libs; singleton:=true
-Bundle-Version: 1.0.2
+Bundle-Version: 1.0.5
 Bundle-Activator: nu.mine.kino.plugin.libs.LibraryPlugin
 Require-Bundle: org.eclipse.core.runtime
 Eclipse-LazyStart: true
-Bundle-ClassPath: lib/commons-collections.jar,
- lib/commons-lang-2.4.jar,
+Bundle-ClassPath: lib/commons-lang-2.4.jar,
  lib/jxl.jar,
  lib/oro.jar,
  lib/xlsbeans.jar,
  lib/commons-logging-1.1.jar,
+ lib/commons-beanutils-1.8.0.jar,
+ lib/commons-collections-3.2.1.jar,
+ lib/commons-logging-1.1.1.jar,
  .
 Export-Package: jxl;
   uses:="jxl.biff,
@@ -70,7 +72,23 @@ Export-Package: jxl;
  net.java.amateras.xlsbeans.sandbox,
  net.java.amateras.xlsbeans.xml;uses:="net.java.amateras.xlsbeans,junit.framework",
  nu.mine.kino.plugin.libs;uses:="org.osgi.framework,org.eclipse.core.runtime",
+ org.apache.commons.beanutils,
+ org.apache.commons.beanutils.converters,
+ org.apache.commons.beanutils.expression,
+ org.apache.commons.beanutils.locale,
+ org.apache.commons.beanutils.locale.converters,
  org.apache.commons.collections,
+ org.apache.commons.collections.bag,
+ org.apache.commons.collections.bidimap,
+ org.apache.commons.collections.buffer,
+ org.apache.commons.collections.collection,
+ org.apache.commons.collections.comparators,
+ org.apache.commons.collections.functors,
+ org.apache.commons.collections.iterators,
+ org.apache.commons.collections.keyvalue,
+ org.apache.commons.collections.list,
+ org.apache.commons.collections.map,
+ org.apache.commons.collections.set,
  org.apache.commons.lang;uses:="org.apache.commons.lang.exception",
  org.apache.commons.lang.builder,
  org.apache.commons.lang.enums,
@@ -92,3 +110,5 @@ Export-Package: jxl;
  org.apache.oro.text.perl;uses:="org.apache.oro.text.regex,org.apache.oro.text",
  org.apache.oro.text.regex,
  org.apache.oro.util
+Bundle-Localization: plugin
+Bundle-Vendor: %providerName
