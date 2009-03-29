@@ -19,14 +19,24 @@
 	</appender>
 
 
+
+	<logger name="org.springframework">
+		<level value="Error" />
+	</logger>
+
+	<logger name="org.hibernate">
+		<level value="error" />
+	</logger>
+	
+	
 	<logger name="nu.mine.kino">
-		<level value="ERROR" />
+		<level value="WARN" />
 	</logger>
 	
 		
 	
 	<root>
-		<level value="ERROR" />
+		<level value="WARN" />
 		<appender-ref ref="System.out" />
 	</root>
 </log4j:configuration>
