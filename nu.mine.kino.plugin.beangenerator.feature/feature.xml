@@ -2,7 +2,7 @@
 <feature
       id="nu.mine.kino.plugin.beangenerator"
       label="%featureName"
-      version="0.4.1"
+      version="0.4.2"
       provider-name="%providerName">
 
    <description url="%descriptionURL">
@@ -37,19 +37,19 @@
          id="nu.mine.kino.plugin.beangenerator"
          download-size="0"
          install-size="0"
-         version="0.4.1"/>
+         version="0.4.2"/>
 
    <plugin
          id="nu.mine.kino.plugin.log4j"
          download-size="0"
          install-size="0"
-         version="0.0.2"/>
+         version="0.0.3"/>
 
    <plugin
          id="nu.mine.kino.plugin.libs"
          download-size="0"
          install-size="0"
-         version="1.0.2"
+         version="1.0.6"
          unpack="false"/>
 
 </feature>
