@@ -74,7 +74,6 @@ public class JavaBeansGeneratorHandler extends AbstractHandler {
                 String id = event.getCommand().getId();
                 JavaBeansCreatorWithProgress progress = new JavaBeansCreatorWithProgress(
                         ss, site, id);
-                // ss, site, event.getCommand().getId());
                 dialog.run(true, true, progress);
             } catch (InvocationTargetException e) {
                 Activator.logException(e);
@@ -82,8 +81,7 @@ public class JavaBeansGeneratorHandler extends AbstractHandler {
                 Activator.logException(e, false);
             }
         } catch (NotDefinedException e) {
-            // TODO é©ìÆê∂ê¨Ç≥ÇÍÇΩ catch ÉuÉçÉbÉN
-            e.printStackTrace();
+            Activator.logException(e);
         }
         return null;
     }
