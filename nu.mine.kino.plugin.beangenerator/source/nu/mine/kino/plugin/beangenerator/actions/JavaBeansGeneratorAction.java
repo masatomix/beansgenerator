@@ -62,7 +62,7 @@ public class JavaBeansGeneratorAction implements IObjectActionDelegate {
         try {
             logger.debug("execute"); //$NON-NLS-1$
             JavaBeansCreatorWithProgress progress = new JavaBeansCreatorWithProgress(
-                    ss, site, action);
+                    ss, site, action.getId());
             dialog.run(true, true, progress);
         } catch (InvocationTargetException e) {
             Activator.logException(e);

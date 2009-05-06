@@ -56,13 +56,22 @@ public class JavaBeansCreatorWithProgress implements IRunnableWithProgress {
 
     private IWorkbenchSite site;
 
-    private final IAction action;
+    private final String id;
+
+    // private final IAction action;
+
+    // public JavaBeansCreatorWithProgress(IStructuredSelection ss,
+    // IWorkbenchSite site, IAction action) {
+    // this.ss = ss;
+    // this.site = site;
+    // this.action = action;
+    // }
 
     public JavaBeansCreatorWithProgress(IStructuredSelection ss,
-            IWorkbenchSite site, IAction action) {
+            IWorkbenchSite site, String id) {
         this.ss = ss;
         this.site = site;
-        this.action = action;
+        this.id = id;
     }
 
     public void run(IProgressMonitor monitor) throws InvocationTargetException,
@@ -96,10 +105,8 @@ public class JavaBeansCreatorWithProgress implements IRunnableWithProgress {
                                     + classInformation.getClassNameJ());
                     ICompilationUnit cu = null;
                     // actionが、Reader生成とJavaBeans 生成でパタンわけ。
-                    if (action
-                            .getId()
-                            .equals(
-                                    "nu.mine.kino.plugin.beangenerator.actions.JavaBeansReaderGeneratorAction")) { //$NON-NLS-1$
+                    if (id
+                            .equals("nu.mine.kino.plugin.beangenerator.actions.JavaBeansReaderGeneratorAction")) { //$NON-NLS-1$
                         cu = new JavaBeansReaderCreator(javaProject)
                                 .create(classInformation);
                     } else {
