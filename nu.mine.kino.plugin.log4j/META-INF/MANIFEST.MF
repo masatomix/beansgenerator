@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: nu.mine.kino.plugin.log4j; singleton:=true
-Bundle-Version: 0.0.3
+Bundle-Version: 0.0.4
 Bundle-Activator: nu.mine.kino.plugin.log4j.Log4jPlugin
 Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
@@ -13,4 +13,5 @@ Export-Package: nu.mine.kino.plugin.log4j,
  org.apache.log4j,
  org.apache.log4j.xml
 Bundle-Vendor: %providerName
-Eclipse-LazyStart: true
+Bundle-ActivationPolicy: lazy
+Bundle-RequiredExecutionEnvironment: J2SE-1.5

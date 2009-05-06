@@ -18,7 +18,7 @@ import java.net.URL;
 import nu.mine.kino.plugin.log4j.Log4jPlugin;
 import nu.mine.kino.plugin.log4j.PreferenceConstants;
 
-import org.eclipse.core.runtime.Platform;
+import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 
@@ -40,7 +40,8 @@ public class Log4jPreferenceInitializer extends AbstractPreferenceInitializer {
             IPreferenceStore store = Log4jPlugin.getDefault()
                     .getPreferenceStore();
             URL entry = Log4jPlugin.getDefault().getBundle().getEntry("/");
-            String pluginDirectory = Platform.resolve(entry).getPath();
+            String pluginDirectory = FileLocator.resolve(entry).getPath();
+            // String pluginDirectory = Platform.resolve(entry).getPath();
             File file = new File(new File(pluginDirectory, "lib"), "log4j.xml");
             store.setDefault(PreferenceConstants.DEFAULT_LOG4J_PATH, file
                     .getAbsolutePath());
