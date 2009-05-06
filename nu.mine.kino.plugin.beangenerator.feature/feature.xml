@@ -2,7 +2,7 @@
 <feature
       id="nu.mine.kino.plugin.beangenerator"
       label="%featureName"
-      version="0.4.2"
+      version="0.4.3"
       provider-name="%providerName">
 
    <description url="%descriptionURL">
@@ -10,7 +10,7 @@
    </description>
 
    <copyright>
-      Copyright (C) 2008 by Masatomi KINO
+      Copyright (C) 2008-2009 by Masatomi KINO
    </copyright>
 
    <license url="%licenseURL">
@@ -29,7 +29,6 @@
       <import plugin="org.eclipse.jdt.ui"/>
       <import plugin="org.eclipse.jface.text"/>
       <import plugin="org.eclipse.core.resources"/>
-      <import plugin="nu.mine.kino.plugin.log4j"/>
       <import plugin="nu.mine.kino.plugin.libs"/>
    </requires>
 
@@ -37,13 +36,13 @@
          id="nu.mine.kino.plugin.beangenerator"
          download-size="0"
          install-size="0"
-         version="0.4.2"/>
+         version="0.4.3"/>
 
    <plugin
          id="nu.mine.kino.plugin.log4j"
          download-size="0"
          install-size="0"
-         version="0.0.3"/>
+         version="0.0.4"/>
 
    <plugin
          id="nu.mine.kino.plugin.libs"
