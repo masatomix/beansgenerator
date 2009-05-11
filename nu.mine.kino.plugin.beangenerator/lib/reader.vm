@@ -17,22 +17,22 @@ package ${class.packageName};
  */
 @Sheet(name = "${class.className}")//$NON-NLS-1$
 public class ${class.className}Sheet {
-    private List<${class.className}> instanceList; 
+    private java.util.List<${class.className}> instanceList; 
     
 	@HorizontalRecords(tableLabel = "${class.className}", recordClass = ${class.className}.class)//$NON-NLS-1$
-    public void set${class.className}(List<${class.className}> instanceList) {
+    public void set${class.className}(java.util.List<${class.className}> instanceList) {
         this.instanceList = instanceList;
     }
 
-    public List<${class.className}> get${class.className}() {
+    public java.util.List<${class.className}> get${class.className}() {
         return instanceList;
     }
 	
 	public static void main(String[] args) throws FileNotFoundException,
             XLSBeansException {
-        InputStream in = new FileInputStream("${class.className}.xls");
+        java.io.InputStream in = new java.io.FileInputStream("${class.className}.xls");
         ${class.className}Sheet sheet = new XLSBeans().load(in, ${class.className}Sheet.class);
-        List<${class.className}> instanceList = sheet
+        java.util.List<${class.className}> instanceList = sheet
                 .get${class.className}();
         for (${class.className} instance : instanceList) {
             System.out.println(instance);
