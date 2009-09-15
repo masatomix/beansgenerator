@@ -1,5 +1,5 @@
 /******************************************************************************
- * Copyright (c) 2008 Masatomi KINO and others. 
+ * Copyright (c) 2008-2009 Masatomi KINO and others. 
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -51,6 +51,11 @@ public class ClassInformation implements IClassInformation {
      * 実際のクラス名です。
      */
     private String className;
+
+    /**
+     * 抽象クラスかどうかを指定するフィールドです
+     */
+    private String abstractt;
 
     /**
      * toStringを出力するか、を格納するフィールドです
@@ -115,6 +120,17 @@ public class ClassInformation implements IClassInformation {
     @LabelledCell(label = "クラス名", type = LabelledCellType.Right)//$NON-NLS-1$	
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    /**
+     * 抽象フィールドをセットする。
+     * 
+     * @param abstractt
+     *            抽象フィールド
+     */
+    @LabelledCell(label = "抽象", type = LabelledCellType.Right)//$NON-NLS-1$	
+    public void setAbstractt(String abstractt) {
+        this.abstractt = abstractt;
     }
 
     /**
@@ -185,6 +201,15 @@ public class ClassInformation implements IClassInformation {
     }
 
     /**
+     * 抽象フィールドを取得する。
+     * 
+     * @return 抽象フィールド
+     */
+    public String getAbstractt() {
+        return abstractt;
+    }
+
+    /**
      * toStringフィールドを取得する。
      * 
      * @return toStringフィールド
@@ -207,7 +232,8 @@ public class ClassInformation implements IClassInformation {
         return new ToStringBuilder(this).append("フィールド情報のリスト",
                 fieldInformations).append("クラス名日本語フィールド", classNameJ).append(
                 "説明フィールド", description).append("パッケージ名フィールド", packageName)
-                .append("クラス名フィールド", className).append("toStringフィールド",
-                        toString).append("付加情報フィールド", addedInfo).toString();
+                .append("クラス名フィールド", className).append("抽象フィールド", abstractt)
+                .append("toStringフィールド", toString).append("付加情報フィールド",
+                        addedInfo).toString();
     }
 }

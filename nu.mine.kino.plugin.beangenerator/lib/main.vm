@@ -16,5 +16,10 @@ package ${class.packageName};
  * @author Masatomi KINO and JavaBeans Creator Plug-in
  * @version $Revision$
  */
+ 
+#if(${class.abstractt}=="Åõ")
+public abstract class  ${class.className} ${class.addedInfo} {
+#else
 public class  ${class.className} ${class.addedInfo} {
+#end
 }

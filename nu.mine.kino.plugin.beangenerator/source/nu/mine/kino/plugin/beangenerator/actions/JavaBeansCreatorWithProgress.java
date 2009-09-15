@@ -58,15 +58,6 @@ public class JavaBeansCreatorWithProgress implements IRunnableWithProgress {
 
     private final String id;
 
-    // private final IAction action;
-
-    // public JavaBeansCreatorWithProgress(IStructuredSelection ss,
-    // IWorkbenchSite site, IAction action) {
-    // this.ss = ss;
-    // this.site = site;
-    // this.action = action;
-    // }
-
     public JavaBeansCreatorWithProgress(IStructuredSelection ss,
             IWorkbenchSite site, String id) {
         this.ss = ss;
